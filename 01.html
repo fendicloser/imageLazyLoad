@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .blur{
+            filter: blur(10px);
+            transition:all 1s;
+        }
+        .noblur{
+            transition: all 1s;
+        }
+    </style>
+</head>
+<body>
+    <p>第一种方法，浏览器会拿到两张相同内容的图片，不同的是，其中一张的分辨率远小于另外一张（大小更小），浏览器先显示渲染这张小的，</p>
+    <img alt="small" src="image/102.jpeg" class="blur" width="800" />
+    <button onclick="onclick()">show</button>
+    <!-- <img alt="big" src="image/1.jpeg" width="800" /> -->
+    <script>
+        var image=document.images[0]
+        var bigImage=document.createElement("img")
+        bigImage.onload=function(){
+            image.src=this.src
+            image.className="noblur";
+        }
+        var onclick=function(){
+            bigImage.src="image/1.jpeg"
+        }
+    </script>
+</body>
+</html>
